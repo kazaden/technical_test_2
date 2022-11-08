@@ -6,8 +6,6 @@ class Trip {
 
 	String desc
 
-	Integer nbParticipantsMax 
-
 	static belongsTo = [pro : Pro]
 
     static constraints = {
