@@ -55,7 +55,7 @@ class ProController {
         }
 
         try {
-            proService.save(pro)
+            //proService.save(pro)
         } catch (ValidationException e) {
             respond pro.errors, view:'edit'
             return
