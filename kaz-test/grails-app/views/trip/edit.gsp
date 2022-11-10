@@ -29,7 +29,28 @@
             <g:form resource="${this.trip}" method="PUT">
                 <g:hiddenField name="version" value="${this.trip?.version}" />
                 <fieldset class="form">
-                    <f:all bean="trip"/>
+                    <%--<f:all bean="trip"/>--%>
+                    <div class="fieldcontain ${hasErrors(bean: trip, field: 'desc', 'error')} ">
+			<label for="desc">
+				<g:message code="activite.desc.label" default="Desc" />
+			</label>
+			<g:textField name="desc" value="${trip?.desc}"/>
+		    </div>
+
+		    <div class="fieldcontain ${hasErrors(bean: trip, field: 'pro', 'error')} required">
+			<label for="pro">
+				<g:message code="trip.pro.label" default="Pro" />
+				<span class="required-indicator">*</span>
+			</label>
+			<g:select id="pro" name="pro.id" from="${kaz.test.Pro.list()}" optionKey="id" required="" value="${trip?.pro?.id}" class="many-to-one"/>
+		    </div>
+
+		    <div class="fieldcontain ${hasErrors(bean: trip, field: 'title', 'error')} ">
+			<label for="title">
+				<g:message code="trip.title.label" default="Title" />
+			</label>
+			<g:textField name="title" value="${trip?.title}"/>
+		    </div>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
